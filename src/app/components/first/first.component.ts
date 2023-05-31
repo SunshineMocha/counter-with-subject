@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataServiceService } from 'src/app/service/data-service.service';
 
 @Component({
   selector: 'app-first',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class FirstComponent {
 
+  constructor(public dataServ: DataServiceService){
+
+  }
 }
