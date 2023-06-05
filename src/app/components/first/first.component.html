@@ -1,3 +1,9 @@
+<h1>Counter con Subject</h1>
+<p>
+    Counter:  {{dataServ.counter | async}}
+    <!-- async per aprire subject -->
+</p>
 <div>
-      {{dataServ.counterValueSubject.value}}
+  <button (click)="dataServ.decrement()">-</button>
+  <button (click)="dataServ.increment()">+</button>
 </div>

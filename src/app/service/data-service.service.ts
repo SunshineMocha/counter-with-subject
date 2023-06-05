@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +8,31 @@ export class DataServiceService {
 
   public counterValueSubject: BehaviorSubject<number> = new BehaviorSubject(0)
 
-  constructor() { }
+    counter = new BehaviorSubject<number>(0);
 
-  increment(){
-    const counterValues = this.counterValueSubject.value;
-    const newValue = counterValues + 1;
+    constructor() { }
 
-    this.counterValueSubject.next(newValue);
-  }
+    increment(){
+        const actualValue = this.counter.value;
+        const newValue = actualValue + 1;
+        this.counter.next(newValue)
+    }
 
-  decrement(){
-    const counterValues = this.counterValueSubject.value;
-    const newValue = counterValues - 1;
+    decrement(){
+      const actualValue = this.counter.value;
+      const newValue = actualValue - 1;
+      this.counter.next(newValue)
+    }
 
-    this.counterValueSubject.next(newValue);
-  }
+    square(){
+      return this.counter.pipe(
+        map((value: number) => value ** 2)
+      )
+    }
+
+    isEven(){
+      return this.square().pipe(
+        map((square: number) => square % 2 === 0)
+      )
+    }
 }

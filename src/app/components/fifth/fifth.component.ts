@@ -2,14 +2,10 @@ import { Component } from '@angular/core';
 import { DataServiceService } from 'src/app/service/data-service.service';
 
 @Component({
-  selector: 'app-first',
-  templateUrl: './first.component.html',
-  styleUrls: ['./first.component.scss']
+  selector: 'app-fifth',
+  templateUrl: './fifth.component.html',
+  styleUrls: ['./fifth.component.scss']
 })
-export class FirstComponent {
-
+export class FifthComponent {
   constructor(public dataServ: DataServiceService){}
-
 }
-
-
